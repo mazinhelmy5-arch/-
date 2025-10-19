@@ -59,7 +59,7 @@ export default function TasbihApp() {
   };
 
   const incrementAdhkar = (index, maxCount) => {
-    const key = ${activeTab}-${index};
+    const key = `${activeTab}-${index}`;
     const current = adhkarProgress[key] || 0;
     if (current < maxCount) {
       setAdhkarProgress({ ...adhkarProgress, [key]: current + 1 });
@@ -68,7 +68,7 @@ export default function TasbihApp() {
   };
 
   const resetAdhkar = (index) => {
-    const key = ${activeTab}-${index};
+    const key = `${activeTab}-${index}`;
     setAdhkarProgress({ ...adhkarProgress, [key]: 0 });
   };
 
@@ -76,7 +76,7 @@ export default function TasbihApp() {
     const newProgress = {};
     const currentList = activeTab === 'morning' ? morningAdhkar : eveningAdhkar;
     currentList.forEach((_, index) => {
-      newProgress[${activeTab}-${index}] = 0;
+      newProgress[`${activeTab}-${index}`] = 0;
     });
     setAdhkarProgress({ ...adhkarProgress, ...newProgress });
   };
@@ -188,7 +188,7 @@ export default function TasbihApp() {
               
               <div className="space-y-3">
                 {(activeTab === 'morning' ? morningAdhkar : eveningAdhkar).map((adhkar, index) => {
-                  const key = ${activeTab}-${index};
+                  const key = `${activeTab}-${index}`;
                   const current = adhkarProgress[key] || 0;
                   const isComplete = current >= adhkar.count;
 
@@ -212,7 +212,7 @@ export default function TasbihApp() {
                           <RotateCcw size={16} />
                         </button>
                         <div className="flex-1 text-center">
-                          <span className={text-2xl font-bold ${isComplete ? 'text-green-600' : 'text-teal-600'}}>
+                          <span className={`text-2xl font-bold ${isComplete ? 'text-green-600' : 'text-teal-600'}`}>
                             {current} / {adhkar.count}
                           </span>
                         </div>
